@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-do List</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="content">
+      <div class="tasks-content">
+        <div class="createTask">
+          <form>
+            <input
+              type="text"
+              name="taskInput"
+              id="taskInput"
+              placeholder="Descrição da tarefa"
+            />
+            <input
+              type="date"
+              name="dateInput"
+              id="dateInput"
+              placeholder="Data da tarefa"
+            />
+          </form>
+          <button onclick="createTask()">Inserir</button>
+          <button onclick="sortTasksByDate()">Ordenar por data</button>
+        </div>
+
+        <div class="tasks">
+          <ul></ul>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      .tasks ul .checked {
+        text-decoration: line-through;
+      }
+    </style>
+
+    <script src="index.js"></script>
+  </body>
+</html>
