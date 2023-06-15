@@ -2,11 +2,16 @@ let tasks = [];
 let taskCount = 0;
 let taskInput = document.getElementById("taskInput");
 let dateInput = document.getElementById("dateInput");
+let warningDesc = document.getElementById("warningDesc");
+let warningDate = document.getElementById("warningDate");
+let teste = dateInput.value;
+
+
 
 window.onload = () => {
   const previousTasks = JSON.parse(localStorage.getItem("tasks"));
-  tasks = previousTasks;
   if (previousTasks) {
+    tasks = previousTasks;
     let taskList = document.querySelector(".tasks ul");
     previousTasks.forEach((task) => {
       let newTaskItem = document.createElement("li");
@@ -15,11 +20,11 @@ window.onload = () => {
       }
 
       newTaskItem.innerHTML =
-        `<input type="checkbox" ${task.completed ? 'checked' : ''} onclick="taskFinish(${task.id}, this)">` +
+        `<input type="checkbox" ${task.completed ? 'checked' : ''} onclick="taskFinish(${task.id}, this)"> <div class="task-info"> <h4>` +
         task.taskName +
-        " - " +
+        "</h4> <span>" +
         task.taskDate +
-        `<button onclick="removeTask(${task.id}, this.parentNode)"> X </button>`;
+        `</span></div><button onclick="removeTask(${task.id}, this.parentNode)"><ion-icon name="close-outline"></ion-icon></button>`;
       taskList.appendChild(newTaskItem);
     });
   }
@@ -34,22 +39,42 @@ function createTask() {
     completed: false
   };
 
-  tasks.push(task);
+  
 
-  let taskList = document.querySelector(".tasks ul");
-  let newTaskItem = document.createElement("li");
-  newTaskItem.innerHTML =
-  `<input type="checkbox" onclick="taskFinish(${task.id}, this)">` +
-    task.taskName +
-    " - " +
-    task.taskDate +
-    `<button onclick="removeTask(${task.id}, this.parentNode)"> X </button>`;
-  taskList.appendChild(newTaskItem);
+  if (taskInput.value.length < 1) {
+    taskInput.classList.toggle("error");
+    warningDesc.style.display = "flex";
+    setTimeout(function () {
+      warningDesc.style.display = "none";
+      taskInput.classList.remove("error");
+    }, 4000);
+    
+  } else if (((task.taskDate).length) <= 0) {
+    dateInput.classList.toggle("error");
+    warningDate.style.display = "flex";
+    setTimeout(function () {
+      warningDate.style.display = "none";
+      dateInput.classList.remove("error");
+    }, 4000);
+  } else {
+    tasks.push(task);
+  
+    let taskList = document.querySelector(".tasks ul");
+    let newTaskItem = document.createElement("li");
+    newTaskItem.innerHTML =
+    `<input type="checkbox" onclick="taskFinish(${task.id}, this)"> <div class="task-info"> <h4>` +
+      task.taskName +
+      "</h4><span> " +
+      task.taskDate +
+      `</span></div><button onclick="removeTask(${task.id}, this.parentNode)"><ion-icon name="close-outline"></ion-icon></button>`;
+    taskList.appendChild(newTaskItem);
+  
+    taskInput.value = "";
+    dateInput.value = "";
+  
+    localStorage.setItem("tasks", "[" + tasks.map(task => JSON.stringify(task)).join(",") + "]");
+  }
 
-  taskInput.value = "";
-  dateInput.value = "";
-
-  localStorage.setItem("tasks", "[" + tasks.map(task => JSON.stringify(task)).join(",") + "]");
 }
 
 function taskFinish(taskId, checkbox) {
@@ -77,11 +102,11 @@ function sortTasksByDate() {
       newTaskItem.classList.toggle("checked");
     }
     newTaskItem.innerHTML =
-      `<input type="checkbox" ${task.completed ? 'checked' : ''} onclick="taskFinish(${task.id}, this)">` +
+      `<input type="checkbox" ${task.completed ? 'checked' : ''} onclick="taskFinish(${task.id}, this)"><div class="task-info"><h4>` +
       task.taskName +
-      " - " +
+      "</h4><span>" +
       task.taskDate +
-      `<button onclick="removeTask(${task.id}, this.parentNode)"> X </button>`;
+      `</span></div><button onclick="removeTask(${task.id}, this.parentNode)"><ion-icon name="close-outline"></ion-icon></button>`;
     taskList.appendChild(newTaskItem);
   });
 }
