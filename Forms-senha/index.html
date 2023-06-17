@@ -1,0 +1,59 @@
+</html>
+
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de validação de senha</title>
+
+    <link rel="stylesheet" href="../Forms-senha/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
+
+</head>
+<body id="page-give-classes">
+
+    <div id="container">
+        <header class="page-header">
+            <div class="top-bar-container">
+                <a href="#">
+                <img src="../Forms-senha/assets/back.svg" alt="Voltar">
+            </a>
+            </div>
+            <div class="header-content">
+                <strong>Formulário de cadastro de senha</strong>
+                
+            </div>
+        </header>
+        <main>
+            <form action="" id="create-password">
+                <fieldset>
+                    <legend>Seus dados</legend>
+
+                    <div class="input-block">
+                        <label for="senha">Senha</label>
+                        <input type="text" name="password" id="password" onkeyup="validatePassword()" required>
+                        <div class="warning" id="warning">
+                            <img src="../Todo-list/assets/warning.svg" alt="ícone de alerta" />
+                          </div>
+                    </div>
+                </fieldset>
+            </form>
+            <footer>
+                <p>
+                    <img src="../Forms-senha/assets/warning.svg" alt="Aviso importante">
+                    importante <br> Preencha todos os dados
+                </p>
+                <button id="button" onclick="limparForm()">Salvar senha</button>
+            </footer>
+        </main>
+    </div>
+    
+
+    <script src="../Forms-senha/index.js"></script>
+</body>
+</html>
+
+
+
