@@ -104,6 +104,9 @@ function sortTasksByDate() {
       `</span></div><button onclick="removeTask(${task.id}, this.parentNode)"><ion-icon name="close-outline"></ion-icon></button>`;
     taskList.appendChild(newTaskItem);
   });
+
+  localStorage.setItem("tasks", "[" + tasks.map(task => JSON.stringify(task)).join(",") + "]");
+
 }
 
 function removeTask(taskId, taskElement) {
