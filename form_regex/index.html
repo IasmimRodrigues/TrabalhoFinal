@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap"
+        rel="stylesheet">
+    <title>Formulário Regex</title>
+    <link rel="stylesheet" href="index.css">
+
+</head>
+
+<body id="page-give-classes">
+    <div id="container">
+       
+        <header class="page-header">
+
+            <div class="header-content">
+                <strong>Formulário de cadastro </strong>
+            </div>
+
+        </header>
+
+        <main>
+            <form action="" onsubmit="return validarFormulario()" id="create-class">
+                <fieldset>
+                    <legend>Seus dados</legend>
+                    <div class="input-block">
+                        <label for="name">Nome:</label>
+                        <input type="text" class="name" id="name" required oninput="validarNome()" style="border:none">
+
+                    </div>
+                    <div class="warning" id="warning"><span id="nomeErro" class="erro"></span></div>
+
+                    <div class="input-block">
+                        <label for="email">E-mail:</label>
+                        <input type="text" class="email" id="email" required oninput="validarEmail()">
+                        <div class="warning" id="warning"><span id="emailErro" class="erro"></span></div>
+                    </div>
+
+                    <div class="input-block">
+                        <label for="cep">CEP:</label>
+                        <input type="text" class="cep" id="cep" required oninput="validarCep()">
+                        <div class="warning" id="warning"><span id="cepErro" class="erro"></span></div>
+                    </div>
+
+
+                </fieldset>
+            </form>
+            <footer>
+                <button type="submit" form="create-class"> Enviar </button>
+            </footer>
+        </main>
+
+
+        <script src="https://unpkg.com/imask"></script>
+        <script src="index.js"></script>
+
+
+</body>
+
+</html>
