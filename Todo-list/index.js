@@ -4,8 +4,6 @@ let taskInput = document.getElementById("taskInput");
 let dateInput = document.getElementById("dateInput");
 let warningDesc = document.getElementById("warningDesc");
 let warningDate = document.getElementById("warningDate");
-let teste = dateInput.value;
-
 
 
 window.onload = () => {
@@ -38,8 +36,6 @@ function createTask() {
     taskDate: dateInput.value,
     completed: false
   };
-
-  
 
   if (taskInput.value.length < 1) {
     taskInput.classList.toggle("error");
@@ -94,7 +90,6 @@ function sortTasksByDate() {
     (a, b) => new Date(a.taskDate) - new Date(b.taskDate)
   );
 
-  // console.log(sortDate)
   taskList.innerHTML = "";
   sortDate.forEach(function (task) {
     let newTaskItem = document.createElement("li");

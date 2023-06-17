@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="light-mode">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KanBan</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <nav>
+        <img src="./assets/logo.svg" alt="Logo do site" class="logo" />
+
+        <ul>
+          <li>
+            <a href="#" class="active">
+              <ion-icon name="tablet-portrait"></ion-icon>
+              Boards
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <ion-icon name="people"></ion-icon>
+              Equipes
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <ion-icon name="document-text"></ion-icon>
+              Relatórios
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <ion-icon name="cog"></ion-icon>
+              Ajustes
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <main>
+        <div class="inner">
+          <section class="title-avatar">
+            <h1>
+              Meu KanBan
+              <img src="./assets/pencil.svg" alt="" />
+            </h1>
+            <div class="title-right">
+              <div class="fontButton">
+                <button onclick="addFontSize(3)">
+                  <ion-icon name="add-circle-outline"></ion-icon> Aumentar letra
+                </button>
+                <button onclick="dimFontSize(3)">
+                  <ion-icon name="remove-circle-outline"></ion-icon> Diminuir
+                  letra
+                </button>
+              </div>
+
+              <div class="switch">
+                <button onclick="toggleMode()"></button>
+              </div>
+              <img src="https://github.com/IasmimRodrigues.png" alt="" />
+            </div>
+          </section>
+
+          <section class="filter">
+            <button>
+              <ion-icon name="filter-outline"></ion-icon>
+              <span>Filtrar</span>
+            </button>
+            <div class="input-wrapper">
+              <ion-icon name="search-outline"></ion-icon>
+              <input
+                type="text"
+                placeholder="Busque por cards, assuntos ou responsáveis..."
+              />
+            </div>
+
+            <button id="buttonOpen">
+              <ion-icon name="add-outline"></ion-icon>
+              <span>Adicionar cartão</span>
+            </button>
+          </section>
+
+          <!-- section kanban -->
+
+          <section class="kanban">
+            <div class="todo">
+              <h2>A fazer</h2>
+              <div class="cards" id="todo">
+                <!-- <div class="card" draggable="true">
+                  <h3>trabalho de sistemas 👩‍💻</h3>
+                  <p>
+                    Fazer uma página de preenchimento de cartão de crédito
+                  </p>
+                  <div class="tags">
+                    <span>cartão</span>
+                    <span>página</span>
+                  </div>
+                </div> -->
+
+                <!-- <div class="card" draggable="true">
+                  <h3>tarefa de inglês 👩‍💻</h3>
+                  <p>
+                    Fazer página 10 do livro
+                  </p>
+                  <div class="tags">
+                    <span>livro</span>
+                    <span>curso</span>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+
+            <div class="doing">
+              <h2>Fazendo</h2>
+
+              <div class="cards">
+                <!-- <div class="card" draggable="true">
+                  <h3>fazer atividade 👩‍💻</h3>
+                  <p>
+                    atividade de javascript
+                  </p>
+                  <div class="tags">
+                    <span>js</span>
+                    <span>javascript</span>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+
+            <div class="done">
+              <h2>Feito</h2>
+
+              <div class="cards">
+                <!-- <div class="card" draggable="true">
+                  <h3>#boracodar 4 👩‍💻</h3>
+                  <p>
+                    Novo desafio do #boracodar da Rocketseat, onde é proposto
+                    construir um quadro de Kanban.
+                  </p>
+                  <div class="tags" id="tags">
+                    <span>rocketsear</span>
+                    <span>desafio</span>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <!-- modal  -->
+
+    <dialog class="dialog">
+      <div class="close-modal">
+        <button id="buttonClose" class="buttonClose">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+      </div>
+
+      <h2>Adicionar cartão:</h2>
+
+      <div class="inputs">
+        <div class="input">
+          <label for="titulo">Título:</label>
+          <input type="text" id="titulo" />
+        </div>
+
+        <div class="input">
+          <label for="titulo">Descrição:</label>
+
+          <textarea name="descricao" id="descricao" required> </textarea>
+        </div>
+
+        <div class="input" id="insertTag">
+          <label for="tag" class="tag"
+            >Tags:
+            <button onclick="inserirTag()" class="inerirTag">
+              <ion-icon name="add-outline"></ion-icon></button
+          ></label>
+          <input type="text" id="tag" />
+        </div>
+
+        <button
+          id="adicionarCard"
+          class="adicionarCard"
+          onclick="inserirCard()"
+        >
+          Adicionar
+        </button>
+      </div>
+    </dialog>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <script src="./scripts.js"></script>
+  </body>
+</html>

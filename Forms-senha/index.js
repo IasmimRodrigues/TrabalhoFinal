@@ -9,7 +9,7 @@ let warning = document.querySelector(".warning");
 button.disabled = true;
 
 const validations = {
-  tamanho: /^.{6,7}$/,
+  tamanho: /^.{6,8}$/,
   caracteresEspeciais: /(?:[^`!@#$%^&*\-_=+'\/.,]*[`!@#$%^&*\-_=+'\/.,]){2}/,
   maiusculaMinuscula: /^(?=.*[a-z]{1})(?=.*[A-Z]{1})/,
   numero: /^(?=.*\d){1}/,

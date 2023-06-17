@@ -59,14 +59,11 @@ function validarCep() {
 }
 
 function validarFormulario() {
-
-
   if (nomeInput.classList.contains('input-vermelho') ||
     email.classList.contains('input-vermelho') ||
     cep.classList.contains('input-vermelho')) {
     alert("Preencha corretamente todos os campos obrigatórios!");
     return false; 
   }
-
   return true; 
 }

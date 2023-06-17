@@ -1,0 +1,501 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  --font-size: 62.5%;
+  font-size: var(--font-size);
+  font-family: "Inter", sans-serif;
+
+  --background-page: #7c3aed;
+  --background-content: #fbfaff;
+  --background-filter: #7c3aed;
+  --background-input: #fff;
+  --border-input: #e3e3e3;
+  --color-font: #403937;
+  --color-content-card: #756966;
+  --color-tags: #7c3aed;
+  --background-tags: #e2d6ff;
+  --background-card: #fff;
+  --color-shadow-card: #eae2fd;
+  --color-icons: #cab3ff;
+  --color-light: #fff;
+  --color-icon-input: #505059;
+  --switch-bg-url: url(./assets/sun.svg);
+  --stroke-color: #00000080;
+  --surface-color: #0000000d;
+
+  --background-highlights: #e2d6ff50;
+  --background-over: #e2d6ff95;
+  --background-filter-hover: #6d2cdd;
+}
+
+.dark-mode {
+  --background-page: #202024;
+  --background-content: #323238;
+  --background-filter: #7c3aed;
+  --background-input: #37373d;
+  --border-input: #47474a;
+  --color-font: #fff;
+  --color-content-card: #bcbcbc;
+  --color-tags: #e2d6ff;
+  --background-tags: #7c3aed;
+  --background-card: #323238;
+  --color-shadow-card: #202023;
+  --color-icons: #7c3aed;
+  --color-icon-input: #fff;
+  --switch-bg-url: url(./assets/moon.svg);
+  --stroke-color: #ffffff80;
+  --surface-color: #ffffff1a;
+
+  --background-highlights: #20202450;
+  --background-over: #20202495;
+}
+
+body {
+  font-size: 1.6rem;
+  background-color: var(--background-page);
+}
+
+a {
+  text-decoration: none;
+}
+
+#app {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+
+  min-height: 100vh;
+}
+
+main .inner {
+  height: 100%;
+  background-color: var(--background-content);
+  border-top-left-radius: 32px;
+
+  padding: 4.8rem 3.2rem;
+}
+
+main {
+  padding-top: 0.8rem;
+}
+
+nav {
+  padding: 3.2rem 2.7rem 0 3.5rem;
+}
+
+ul {
+  margin-top: 6rem;
+
+  list-style: none;
+
+  display: grid;
+  gap: 3.6rem;
+
+  min-width: 11.5rem;
+}
+
+li a {
+  color: var(--color-icons);
+
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+
+  font-weight: 500;
+}
+
+a.active,
+a:hover {
+  color: var(--color-light);
+  font-weight: 700;
+}
+
+a ion-icon {
+  font-size: 2rem;
+}
+
+/* Section Title + Avatar + Page mode */
+
+section.title-avatar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1.1rem 2.4rem;
+}
+
+.title-avatar .title-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+}
+
+.title-avatar .title-right .switch button {
+  width: 32px;
+  height: 32px;
+  background: #7c3aed var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+  box-shadow: 0rem 0.3rem 2rem rgba(124, 58, 237, 0.6);
+
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.title-avatar .title-right .fontButton {
+  display: flex;
+  gap: 10px;
+}
+
+.title-avatar .title-right .fontButton button {
+  padding: 1rem 2rem;
+  border: 0;
+  background: #e2d6ff;
+  border-radius: 0.5rem;
+  color: #403937;
+
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.5s;
+  gap: 1rem;
+}
+
+.title-avatar .title-right .fontButton button:hover {
+  background: #dccbff;
+}
+
+.title-avatar .title-right .switch button:hover {
+  box-shadow: none;
+}
+
+.title-avatar .title-right > img {
+  width: 6.4rem;
+  height: 6.4rem;
+  border-radius: 50%;
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+
+  font-size: 3.2rem;
+  color: var(--color-font);
+}
+
+/* Section Filter */
+
+section.filter {
+  margin-top: 3.2rem;
+  padding: 0 2.4rem;
+
+  display: flex;
+  gap: 1.2rem;
+}
+
+.filter button {
+  padding: 1.2rem 3.2rem;
+  border: 0;
+  background: var(--background-filter);
+  border-radius: 0.5rem;
+  color: var(--color-light);
+
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+}
+
+.filter button:hover {
+  background: var(--background-filter-hover);
+}
+
+.filter button span {
+  text-shadow: 0rem 0.4rem 1.6rem rgba(22, 22, 22, 0.1);
+
+  font-size: 1.4rem;
+}
+
+.filter button ion-icon {
+  font-size: 2.4rem;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  border: 0.07rem solid var(--border-input);
+  box-sizing: 0rem 0.4rem 1.6rem rgba(22, 22, 22, 0.1);
+  border-radius: 0.8rem;
+  padding: 0 2.4rem;
+
+  flex: 1; /*Vai ocupar o espaço disponível para o flex 1*/
+}
+
+.input-wrapper input {
+  background: var(--background-input);
+}
+
+.input-wrapper ion-icon {
+  font-size: 2, 4rem;
+  color: var(--color-icon-input);
+}
+
+.input-wrapper input {
+  border: 0;
+  width: 100%;
+  outline: 0;
+}
+
+.input-wrapper:has(:focus) {
+  outline: 0.2rem black solid;
+}
+
+.input-wrapper input::placeholder {
+  font-size: 1.6rem;
+  color: #7c7c8a;
+}
+
+/* section kanban */
+
+section.kanban {
+  display: flex;
+  gap: 4.8rem;
+  padding-top: 3.2rem;
+
+  /* height: 75%; */
+}
+
+section.kanban > * {
+  flex: 1;
+  padding: 2.4rem;
+
+  height: 105%;
+}
+
+section.kanban h2 {
+  font-size: 2rem;
+  color: var(--color-font);
+  padding: 2.4rem 0;
+}
+
+.card {
+  padding: 2.4rem;
+  background: var(--background-card);
+  box-shadow: 0rem 0.4rem 1rem var(--color-shadow-card);
+  border-radius: 0.8rem;
+
+  line-height: 130%;
+  cursor: grab;
+}
+
+.card h3 {
+  font-size: 1.4rem;
+  color: var(--color-font);
+}
+
+.card p {
+  font-weight: 500;
+  font-size: 1.4rem;
+
+  color: var(--color-content-card);
+
+  margin-top: 1rem;
+}
+
+.card .tags {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--color-tags);
+  font-weight: 500;
+}
+
+.card .tags span {
+  font-size: 1.1rem;
+  line-height: 130%;
+  background: var(--background-tags);
+  border-radius: 0.8rem;
+  padding: 0.4rem 0.8rem;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  padding: 10px;
+  border-radius: 10px;
+  min-height: 190px;
+}
+
+/* css para a parte de drag and drop */
+
+.highlights {
+  background: var(--background-highlights);
+
+  height: 100%;
+}
+
+.cards,
+.card {
+  transition: 0.4s;
+}
+
+.is-dragging {
+  cursor: grab;
+  opacity: 0.3;
+}
+
+.over {
+  background: var(--background-over);
+}
+
+/* Modal */
+
+.dialog::backdrop {
+  background-color: #00000050;
+  backdrop-filter: blur(3px);
+}
+
+.dialog {
+  margin: auto;
+  width: 800px;
+  height: 500px;
+  position: absolute;
+  align-items: center;
+  background: var(--background-card);
+  border-radius: 10px;
+  border: none;
+}
+
+.dialog .close-modal {
+  display: flex;
+  justify-content: flex-end;
+  margin: 15px;
+}
+
+.dialog .close-modal button {
+  padding: 5px;
+  border: none;
+  background: var(--background-card);
+  cursor: pointer;
+}
+
+.dialog .close-modal button ion-icon {
+  font-size: 25px;
+  color: var(--color-font);
+}
+
+.dialog h2 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--background-filter);
+}
+
+.dialog .buttonClose {
+  position: relative;
+  right: 0;
+}
+
+.dialog .inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.dialog .inputs .input {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 15px 0;
+}
+
+.dialog .inputs label {
+  color: var(--color-font);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.dialog .inputs input {
+  width: 400px;
+  height: 30px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: solid 1.5px var(--border-input);
+  color: var(--color-font);
+  font-size: 13px;
+  background: var(--background-input);
+}
+
+.dialog .inputs textarea {
+  width: 400px;
+  height: 200px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: solid 1.5px var(--border-input);
+  color: var(--color-font);
+  font-size: 13px;
+  font-weight: 500;
+  resize: none;
+  outline: 0;
+  background: var(--background-input);
+}
+
+.dialog .inputs .input .tag {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dialog .inputs .input .tag button {
+  border: none;
+  background: var(--background-filter);
+  border-radius: 5px;
+  width: 23px;
+  height: 23px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dialog .inputs .input .tag button ion-icon {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.dialog .inputs .adicionarCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 40px;
+  padding: 1.2rem 3.2rem;
+  border: none;
+  background: var(--background-filter);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: 0.4s;
+  margin-top: 20px;
+}
+
+.dialog .inputs .adicionarCard:hover {
+  background: var(--background-filter-hover);
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="buttonOpen">abrir modal</button>
+    <dialog class="dialog">
+      <h2>teste</h2>
+
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo explicabo
+        omnis ut id hic voluptatem illo harum porro quaerat possimus corporis
+        nulla cumque esse maxime, eveniet sapiente facere quasi ipsam!
+      </p>
+
+      <button class="buttonClose">Close</button>
+    </dialog>
+
+    <script>
+      const button = document.getElementById("buttonOpen")
+      const modal = document.querySelector("dialog")
+      const buttonClose = document.querySelector("dialog button")
+
+      button.onclick = function () {
+        modal.showModal()
+      }
+
+      buttonClose.onclick = function () {
+        modal.close()
+      }
+    </script>
+  </body>
+</html>
